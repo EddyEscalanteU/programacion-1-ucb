@@ -87,6 +87,7 @@ function ejercicioCincoBtnApp(){
 // Ejecuta la inicialización
 initializeCanvas();
 
+
 function drawMatrixWithImages(imageNames) {
   const width = canvas.width = canvas.clientWidth;
   const height = canvas.height = canvas.clientHeight;
@@ -103,7 +104,7 @@ function drawMatrixWithImages(imageNames) {
 
       if (index < imageNames.length) {
         const img = new Image();
-        img.src = "assets/" + imageNames[index]; // ruta a tu carpeta
+        img.src = "assets/" + imageNames[index] + ".png"; // ruta a tu carpeta
         img.onload = () => {
           context.drawImage(img, x, y, cellWidth, cellHeight);
         };
@@ -114,15 +115,18 @@ function drawMatrixWithImages(imageNames) {
   }
 }
 
+
+
+
 const fillImagesBtn = document.getElementById('fillImagesBtn');
 
 const imageNames = [
-  "1.png"
+  "1", "2", "3"
 ];
-
 
 fillImagesBtn.addEventListener('click', () => {
   matrix.fillFromAssets(imageNames);
   drawMatrixWithImages(imageNames);
 });
+
 
