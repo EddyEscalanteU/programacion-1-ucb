@@ -4,13 +4,14 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1000;
 canvas.height = 1000;
 
-const rows = 25;
-const cols = 25;
+const rows = 5;
+const cols = 5;
 const cellSize = canvas.width / cols;
+const currentLevel = 3;
 
 // Crear instancia de Matrix y cargar el mapa
 const mapMatrix = new Matrix(rows, cols);
-mapMatrix.fillFromArray(MAP_DATA);
+mapMatrix.fillFromArray(LEVELS[currentLevel]);
 console.log(mapMatrix.toString());
 
 // Cargar imágenes
@@ -39,13 +40,10 @@ function drawMap() {
       const img = images[value];
       if (img && img.complete) {
         ctx.drawImage(img, c * cellSize, r * cellSize, cellSize, cellSize);
-      } else if (img) {
-        img.onload = () => {
-          ctx.drawImage(img, c * cellSize, r * cellSize, cellSize, cellSize);
-        };
       }
     }
   }
 }
+
 
 drawMap();
